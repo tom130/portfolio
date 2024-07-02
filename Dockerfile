@@ -9,7 +9,7 @@ RUN yarn build
 
 FROM nginx:latest
 EXPOSE $NGINX_PORT
-COPY --from=builder /build /usr/share/nginx/html
+COPY --from=builder /app/build /usr/share/nginx/html
 RUN mkdir /config &&\
   rm /etc/nginx/conf.d/default.conf &&\
   ln -s /config/custom.conf /etc/nginx/conf.d/default.conf
